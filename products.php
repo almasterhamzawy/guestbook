@@ -7,9 +7,9 @@ $productsObject = new product();
 
 $products = $productsObject-> getAllProducts ();
 
-$selected = 'products';
+$selected = 'scripts';
 
-$pageTitle = 'products';
+$pageTitle = 'scripts';
 
 include(VIEW.'/front/navbar.html');
 include(VIEW.'/front/products.html');

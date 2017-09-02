@@ -4,8 +4,8 @@
 
 require("../global.php");
 require(INCLUDES.'/generalFunctions.php');
-require(DATABASE.'/security.php');
 require(DATABASE.'/user.php');
+require(DATABASE.'/security.php');
 
 session_start();
 
@@ -17,26 +17,16 @@ $success = '';
 
 $userObject = new user();
 
-
 $secObject = new sec();
+
 
 if (count($_POST) >0){
 
-    $username  = $_POST['username'];
-    $email     = $_POST['email'];
+    $username  = filter_var($_POST['username'],FILTER_SANITIZE_STRING);
+    $email     = filter_var($_POST['email'],FILTER_SANITIZE_EMAIL);
     $password  = $_POST['password'];
 
-    if(!empty($addUser)){
-
-        $addUser = $userObject->addUser($secObject->encrypt($username),$secObject->hashPassword($password),$secObject->encrypt($email));
-
-        $success ="User added successfully";
-
-    }else{
-        //  add error validate start
-
-
-        $errorMessage = array();
+    $errorMessage = array();
 
         if(strlen($username) < 3){
 
@@ -56,19 +46,28 @@ if (count($_POST) >0){
             $passwordError = $errorMessage[] = 'you must add password';
         }
 
-        if(!filter_var($email,FILTER_VALIDATE_EMAIL) || empty($email) ){
+        if(!(filter_var($email,FILTER_VALIDATE_EMAIL)) || empty($email) ){
 
             $emailError = $errorMessage[] = 'you must add email';
 
         }
 
+    if(count($errorMessage)>0){
+
+        $error = "user not add";
+
+    }else{
+
+        $userObject = new user();
+
+        $userObject->addUser($username,$secObject->hashPassword($password,SALT),$email);
+
+        $success = 'User added successfully...';
 
     }
 
 
-
 }
-
 
 //adding design
 
