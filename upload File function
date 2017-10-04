@@ -11,13 +11,15 @@
        if (($type == 'image/png' || $type == 'image/jpg' || $type == 'image/jpeg') && $errorUpload == 0) {
 
             //change photo name
-            $image = md5($name.date('U').rand(1000, 100000).$name);
+            
+            $image_name = md5($name.date('U').rand(1000, 100000).$name);
 
             //move image place
+            
            $extension = pathinfo($name, PATHINFO_EXTENSION);
            
            $fileNameKey .= "." . $extension;
            
-           move_uploaded_file($tmp,"the path of the image".$company_logo.$filenamekey);
+           move_uploaded_file($tmp,"the path of the image".$image_name.$fileNameKey);
         }
     }
