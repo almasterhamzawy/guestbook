@@ -1,0 +1,21 @@
+ $company_logo = '';
+
+        if (isset($_FILES['logo'])) {
+
+        $name        = $_FILES['logo']['name'];
+        $type        = $_FILES['logo']['type'];
+        $tmp         = $_FILES['logo']['tmp_name'];
+        $errorUpload = $_FILES['logo']['error'];
+        $size        = $_FILES['logo']['size'];
+
+       if (($type == 'image/png' || $type == 'image/jpg' || $type == 'image/jpeg') && $errorUpload == 0) {
+
+            //change photo name
+            $company_logo = md5($name.date('U').rand(1000, 100000).$name);
+
+            //move image place
+           $extension = pathinfo($name, PATHINFO_EXTENSION);
+           $filenamekey .= "." . $extension;
+           move_uploaded_file($tmp,"$PATH[IMAGES]/companies/logos/".$company_logo.$filenamekey);
+        }
+    }
