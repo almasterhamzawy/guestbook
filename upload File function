@@ -1,6 +1,6 @@
  $image = '';
 
-        if (isset($_FILES['logo'])) {
+        if (isset($_FILES['the on post on html element'])) {
 
         $name        = $_FILES['the on post on html element']['name'];
         $type        = $_FILES['the on post on html element']['type'];
