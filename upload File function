@@ -1,21 +1,23 @@
- $company_logo = '';
+ $image = '';
 
         if (isset($_FILES['logo'])) {
 
-        $name        = $_FILES['logo']['name'];
-        $type        = $_FILES['logo']['type'];
-        $tmp         = $_FILES['logo']['tmp_name'];
-        $errorUpload = $_FILES['logo']['error'];
-        $size        = $_FILES['logo']['size'];
+        $name        = $_FILES['the on post on html element']['name'];
+        $type        = $_FILES['the on post on html element']['type'];
+        $tmp         = $_FILES['the on post on html element']['tmp_name'];
+        $errorUpload = $_FILES['the on post on html element']['error'];
+        $size        = $_FILES['the on post on html element']['size'];
 
        if (($type == 'image/png' || $type == 'image/jpg' || $type == 'image/jpeg') && $errorUpload == 0) {
 
             //change photo name
-            $company_logo = md5($name.date('U').rand(1000, 100000).$name);
+            $image = md5($name.date('U').rand(1000, 100000).$name);
 
             //move image place
            $extension = pathinfo($name, PATHINFO_EXTENSION);
-           $filenamekey .= "." . $extension;
-           move_uploaded_file($tmp,"$PATH[IMAGES]/companies/logos/".$company_logo.$filenamekey);
+           
+           $fileNameKey .= "." . $extension;
+           
+           move_uploaded_file($tmp,"the path of the image".$company_logo.$filenamekey);
         }
     }
