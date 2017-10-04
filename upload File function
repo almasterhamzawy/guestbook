@@ -1,12 +1,12 @@
  $image = '';
 
-        if (isset($_FILES['the on post on html element'])) {
+        if (isset($_FILES['the value of <input type="file">'])) {
 
-        $name        = $_FILES['the on post on html element']['name'];
-        $type        = $_FILES['the on post on html element']['type'];
-        $tmp         = $_FILES['the on post on html element']['tmp_name'];
-        $errorUpload = $_FILES['the on post on html element']['error'];
-        $size        = $_FILES['the on post on html element']['size'];
+        $name        = $_FILES['the value of <input type="file">']['name'];
+        $type        = $_FILES['the value of <input type="file">']['type'];
+        $tmp         = $_FILES['the value of <input type="file">']['tmp_name'];
+        $errorUpload = $_FILES['the value of <input type="file">']['error'];
+        $size        = $_FILES['the value of <input type="file">']['size'];
 
        if (($type == 'image/png' || $type == 'image/jpg' || $type == 'image/jpeg') && $errorUpload == 0) {
 
