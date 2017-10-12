@@ -1,4 +1,5 @@
- $image = '';
+ $image = ''; //save the name of the image 
+ $fileNamekey = ''; //save the extension of the image
 
         if (isset($_FILES['the value of <input type="file">'])) {
 
